@@ -264,7 +264,7 @@ st.markdown('📸 카메라로 직접 블록구조를 촬영하실 수 있습니
 
 picture = st.camera_input("Take a picture")
 
-uploaded_file = st.file_uploader("Choose an image...")
+
 
 option = st.selectbox(
      '샘플 사진으로 테스트해보세요.',
@@ -281,6 +281,9 @@ if option =='CDEFI':
 
 if picture:
     uploaded_file = picture
+    
+ uploaded_file = st.file_uploader("choose an image...")      
+
 
 if uploaded_file is not None:
     # src_image = load_image(uploaded_file)
