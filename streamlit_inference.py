@@ -281,8 +281,7 @@ if option =='CDEFI':
 
 if picture:
     uploaded_file = picture
-    
-    uploaded_file = st.file_uploader("choose an image...")      
+uploaded_file = st.file_uploader("choose an image...")      
 
 
 if uploaded_file is not None:
