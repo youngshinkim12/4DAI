@@ -264,14 +264,17 @@ st.markdown('📸 카메라로 직접 블록구조를 촬영하실 수 있습니
 
 picture = st.camera_input("Take a picture")
 
-
+# uploaded_file = st.file_uploader("Choose an image...")
 
 option = st.selectbox(
      '샘플 사진으로 테스트해보세요.',
-     ('AF', 'ABCG', 'CDEFI'))
+     ('선택하세요', 'AF', 'ABCG', 'CDEFI'))
 
 st.write('You selected:', option)
 
+
+if option == '선택하세요':
+    uploaded_file = None
 if option =='AF':
     uploaded_file = 'sample/02_AF_N05_02.JPG'
 if option =='ABCG':
@@ -281,9 +284,14 @@ if option =='CDEFI':
 
 if picture:
     uploaded_file = picture
-uploaded_file = st.file_uploader("choose an image...")      
 
+elif option != '선택하세요':
+    uploaded_file = uploaded_file
+    
+else:
+    uploaded_file = st.file_uploader("Choose an image...")
 
+    
 if uploaded_file is not None:
     # src_image = load_image(uploaded_file)
 
@@ -297,10 +305,3 @@ if uploaded_file is not None:
 
     if st.button("GradCAM"):
         st.image(np.transpose(grid_image.numpy(), (1,2,0)), clamp=True)
-
-
-
-
-
-
-
